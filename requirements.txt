@@ -1,0 +1,22 @@
+# Core Python dependencies
+pyyaml
+pydantic
+langchain
+langchain-openai
+langgraph
+python-dotenv
+
+# Parsing and code manipulation
+tree_sitter
+tree-sitter
+tree-sitter-c==0.23.4
+
+# System utils
+tqdm
+rich
+typing_extensions
+
+# Area-2: Quality Signal Dashboard (Streamlit) + charts
+streamlit
+plotly
+pandas

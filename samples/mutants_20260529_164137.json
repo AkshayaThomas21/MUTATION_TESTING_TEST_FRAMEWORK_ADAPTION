@@ -1,0 +1,40 @@
+{
+    "calculate_size (const uint8 *str, uint8 max_length)": [
+        {
+            "original_code": "while((str[length]!= (uint8)'\\0') && (length < max_length))",
+            "mutated_code": "while((str[length]!= (uint8)'\\0') && (length <= max_length))",
+            "mutant_category": "Relational Operator Replacement",
+            "mutant_id": 1
+        },
+        {
+            "original_code": "while((str[length]!= (uint8)'\\0') && (length < max_length))",
+            "mutated_code": "while((str[length]!= (uint8)'\\0') || (length < max_length))",
+            "mutant_category": "Logical Connector Mutation",
+            "mutant_id": 2
+        },
+        {
+            "original_code": "uint8 length = 0u;",
+            "mutated_code": "uint8 length = (max_length == 0u) ? 1u : 0u;",
+            "mutant_category": "Conditional Initialization Mutation",
+            "mutant_id": 3
+        },
+        {
+            "original_code": "while((str[length]!= (uint8)'\\0') && (length < max_length))",
+            "mutated_code": "while((str[length]!= (uint8)'\\0') && (length + 1u < max_length))",
+            "mutant_category": "Off-by-One Boundary Mutation",
+            "mutant_id": 4
+        },
+        {
+            "original_code": "while((str[length]!= (uint8)'\\0') && (length < max_length))",
+            "mutated_code": "while((str[length]!= (uint8)'\\0') && (length < max_length - 1u))",
+            "mutant_category": "Off-by-One Boundary Mutation",
+            "mutant_id": 5
+        },
+        {
+            "original_code": "return length;",
+            "mutated_code": "return length + (max_length == 0u ? 1u : 0u);",
+            "mutant_category": "Return Value Change",
+            "mutant_id": 6
+        }
+    ]
+}

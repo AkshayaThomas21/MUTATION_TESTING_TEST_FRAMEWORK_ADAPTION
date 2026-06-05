@@ -1,0 +1,424 @@
+(venv) C:\Users\kos1hyd\workspace\V&V\Mutation_Test_AI>python Mutation_Test.py --config config.yaml
+[INFO] Extracting functions from: C:\Users\kos1hyd\workspace\Midas_Support3\rbx\AppData\AppDcmHndlr\src\AppDcmHndlr.c
+[INFO] Found 9 functions:
+----------------------------------------
+  1 : hexDigitToChar (uint32 digit)
+  2 : hexToString (uint32 number, uint8 *buffer, uint8 bufferSize)
+  3 : decimalToString (uint8 number, uint8* buffer)
+  4 : calculate_size (const uint8 *str, uint8 max_length)
+  5 : Set_Precondition_Bit (uint8 * Data, uint8 bit)
+  6 : AppDcmHndlr_Init(void)
+  7 : rbd_AppDcmHndlr_5ms(void)
+  8 : AppDcmHndlr_Comparearray (uint8 *write,uint8 *read)
+  9 : AppDcmHndlr_channel_set (void)
+----------------------------------------
+Enter function numbers to process (comma-separated, or 'all' for all): 4
+[INFO] Selected functions: ['calculate_size (const uint8 *str, uint8 max_length)']
+============================================================
+  MUTATION TESTING PIPELINE — GTEST
+============================================================
+  Project:    C:/Users/kos1hyd/workspace/Midas_Support3
+  Source:     C:\Users\kos1hyd\workspace\Midas_Support3\rbx\AppData\AppDcmHndlr\src\AppDcmHndlr.c
+  Tests:      C:\Users\kos1hyd\workspace\Midas_Support3\rbx\AppData\AppDcmHndlr\tst\UT_GTB_AppDcmHndlr\Testcases
+  Script:     C:/Users/kos1hyd/workspace/Git/ma_mutation_testing/run_tests_gtest.cmd
+  Output:     mutants_output
+  Recursion:  2
+  Functions:  ['calculate_size (const uint8 *str, uint8 max_length)']
+============================================================
+=== Extracting Functions and Test Cases ===
+[INFO] Testcases saved to tests.json
+[INFO] Equivalent mutants file initialized at: equivalents\equivalents_20260529_163020.json
+
+=== Processing Function: calculate_size (const uint8 *str, uint8 max_length) ===
+--- CALLED SOURCE ANALYZER AGENT ---
+[INFO] Context summary generated locally.
+--- CALLED SOURCE ANALYZER AGENT ---
+
+---CALLED TESTCASE ANALYZER AGENT---
+
+---CALLED MUTATION GENERATOR AGENT---
+[DEBUG] Recursion progress: 1 / 2
+
+---CALLED MUTATION REFLECTOR AGENT---
+
+---CALLED MUTATION GENERATOR AGENT---
+[DEBUG] Recursion progress: 2 / 2
+[INFO] Raw mutants for calculate_size (const uint8 *str, uint8 max_length): 7
+
+---CALLED EQUIVALENT CHECKER AGENT---
+Equivalent mutants for function 'calculate_size' saved to: equivalents.json
+[INFO] Non-equivalent mutants for calculate_size (const uint8 *str, uint8 max_length): 6
+
+---CALLED HALLUCINATION CHECKER AGENT---
+[WARNING] Could not save hallucination details: [Errno 22] Invalid argument: 'intermediate\\hallucinations_calculate_size (const uint8 *str, uint8 max_length)_20260529_163020.json'
+Hallucination check complete for calculate_size (const uint8 *str, uint8 max_length)
+
+=== Mutation JSON saved at: mutants_output\mutants_20260529_164137.json ===
+
+=== Running clone pipeline ===
+[INFO] Configuring CMake...
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/kos1hyd/workspace/Midas_Support3/build
+[INFO] Building full project...
+Consolidate compiler generated dependencies of target UT_IntFaultHndlr
+[ 12%] Built target UT_IntFaultHndlr
+Consolidate compiler generated dependencies of target UT_CalPrmHndlr
+[ 25%] Built target UT_CalPrmHndlr
+Consolidate compiler generated dependencies of target UT_ProtdDataConv
+[ 37%] Built target UT_ProtdDataConv
+Consolidate compiler generated dependencies of target UT_ComDataConv
+[ 50%] Built target UT_ComDataConv
+Consolidate compiler generated dependencies of target UT_DebugMsgDataConv
+[ 62%] Built target UT_DebugMsgDataConv
+Consolidate compiler generated dependencies of target UT_SwcParsedHndlr
+[ 75%] Built target UT_SwcParsedHndlr
+Consolidate compiler generated dependencies of target UT_AppDcmHndlr
+[ 87%] Built target UT_AppDcmHndlr
+Consolidate compiler generated dependencies of target UT_NvmBlockHndlr
+[100%] Built target UT_NvmBlockHndlr
+[INFO] Building test target: UT_AppDcmHndlr
+[100%] Built target UT_AppDcmHndlr
+[INFO] Running test binary: build\host\UT_AppDcmHndlr.exe
+Running main() from C:\Users\mfr2abt\.conan\data\gtest\cci.20210126\_\_\build\0751861366278f33f0083eccf7c8108ccc2fc771\source_subfolder\googletest\src\gtest_main.cc
+[==========] Running 145 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 145 tests from AppDcmHndlrMockFixture
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDataDIAGONIfPositive
+[       OK ] AppDcmHndlrMockFixture.TestReadDataDIAGONIfPositive (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDataDIAGONIFNegative
+[       OK ] AppDcmHndlrMockFixture.TestReadDataDIAGONIFNegative (1 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDataNegative
+[       OK ] AppDcmHndlrMockFixture.TestReadDataNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMInitial
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMInitial (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending2
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending2 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending3
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending3 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDefaultCase
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDefaultCase (1 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitial
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitial (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitialBranchTest
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitialBranchTest (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPending
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPending (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingIf
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingIf (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElseIf
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElseIf (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElse
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMDefaultCase
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMDefaultCase (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestInitProc
+[       OK ] AppDcmHndlrMockFixture.TestInitProc (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5ms
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5ms (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msNegative
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msNegative2
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msNegative2 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msCoverage
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msCoverage (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msElse
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF113
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF113 (1 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC01C
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC01C (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC021
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC021 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF18Cfunc
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF18Cfunc (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF163func
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF163func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF111func
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF111func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF110func
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF110func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDReadSecureMessagePayload
+[       OK ] AppDcmHndlrMockFixture.TestDIDReadSecureMessagePayload (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDReadFreshnessValueManagerPayload
+[       OK ] AppDcmHndlrMockFixture.TestDIDReadFreshnessValueManagerPayload (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDReadCANMessageAuthentication
+[       OK ] AppDcmHndlrMockFixture.TestDIDReadCANMessageAuthentication (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestStartRoutine0212func
+[       OK ] AppDcmHndlrMockFixture.TestStartRoutine0212func (1 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestStartRoutine0212funcElse
+[       OK ] AppDcmHndlrMockFixture.TestStartRoutine0212funcElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestStartRoutine0232func
+[       OK ] AppDcmHndlrMockFixture.TestStartRoutine0232func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC023
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC023 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC028
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC028 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TesthexDigitToChar
+[       OK ] AppDcmHndlrMockFixture.TesthexDigitToChar (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TesthexToString
+[       OK ] AppDcmHndlrMockFixture.TesthexToString (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestSecurityBufferReset
+[       OK ] AppDcmHndlrMockFixture.TestSecurityBufferReset (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestSecurityBuffersreset1
+[       OK ] AppDcmHndlrMockFixture.TestSecurityBuffersreset1 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC03B
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC03B (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC03BElse
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC03BElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC03BNegative
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC03BNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC039
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC039 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC039Else
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC039Else (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC039Negative
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC039Negative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC021
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC021 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC01C
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC01C (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC023
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC023 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC028
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC028 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDC03C
+[       OK ] AppDcmHndlrMockFixture.TestDIDC03C (1 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDC03CElse
+[       OK ] AppDcmHndlrMockFixture.TestDIDC03CElse (1 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDC03CNegative
+[       OK ] AppDcmHndlrMockFixture.TestDIDC03CNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestCompareArray
+[       OK ] AppDcmHndlrMockFixture.TestCompareArray (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestCalculateSize
+[       OK ] AppDcmHndlrMockFixture.TestCalculateSize (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDecimalToString
+[       OK ] AppDcmHndlrMockFixture.TestDecimalToString (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDDE21
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDDE21 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDDE21Branch
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDDE21Branch (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDDE1C
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDDE1C (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDDE1CBranch
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDDE1CBranch (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDDE23
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDDE23 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDDE23Branch
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDDE23Branch (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDDE28
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDDE28 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDDE28Branch
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDDE28Branch (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDDE23
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDDE23 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDDE28
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDDE28 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDDE1C
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDDE1C (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDDE21
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDDE21 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF1E0
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF1E0 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWHDRIDF000
+[       OK ] AppDcmHndlrMockFixture.TestWHDRIDF000 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestSetPreConditionBit
+[       OK ] AppDcmHndlrMockFixture.TestSetPreConditionBit (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDD04F
+[       OK ] AppDcmHndlrMockFixture.TestDIDD04F (1 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDDD0B
+[       OK ] AppDcmHndlrMockFixture.TestDIDDD0B (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDEB00Write
+[       OK ] AppDcmHndlrMockFixture.TestDIDEB00Write (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDEB00Read
+[       OK ] AppDcmHndlrMockFixture.TestDIDEB00Read (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestRID2073
+[       OK ] AppDcmHndlrMockFixture.TestRID2073 (1 ms)
+[ RUN      ] AppDcmHndlrMockFixture.WHD_DID_DDC0
+[       OK ] AppDcmHndlrMockFixture.WHD_DID_DDC0 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.WHD_DID_DDC1
+[       OK ] AppDcmHndlrMockFixture.WHD_DID_DDC1 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.WHD_DID_DDC2
+[       OK ] AppDcmHndlrMockFixture.WHD_DID_DDC2 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.WHD_DID_DDC3
+[       OK ] AppDcmHndlrMockFixture.WHD_DID_DDC3 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.WHD_DID_DDC4
+[       OK ] AppDcmHndlrMockFixture.WHD_DID_DDC4 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.WHD_DID_DDC5
+[       OK ] AppDcmHndlrMockFixture.WHD_DID_DDC5 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.WHD_DID_DDC6
+[       OK ] AppDcmHndlrMockFixture.WHD_DID_DDC6 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.WHD_DID_DDC7
+[       OK ] AppDcmHndlrMockFixture.WHD_DID_DDC7 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.WHD_DID_DDC8
+[       OK ] AppDcmHndlrMockFixture.WHD_DID_DDC8 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.WHD_DID_DDC9
+[       OK ] AppDcmHndlrMockFixture.WHD_DID_DDC9 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.WHD_DID_DDCA
+[       OK ] AppDcmHndlrMockFixture.WHD_DID_DDCA (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.WHD_DID_DDCB
+[       OK ] AppDcmHndlrMockFixture.WHD_DID_DDCB (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.WHD_DID_DDCC
+[       OK ] AppDcmHndlrMockFixture.WHD_DID_DDCC (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.WHD_DID_DDCD
+[       OK ] AppDcmHndlrMockFixture.WHD_DID_DDCD (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDD077Read
+[       OK ] AppDcmHndlrMockFixture.DIDD077Read (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDD077ShortTermAdjust
+[       OK ] AppDcmHndlrMockFixture.DIDD077ShortTermAdjust (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDD077ReturnControl
+[       OK ] AppDcmHndlrMockFixture.DIDD077ReturnControl (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.AppDcmHndlr_DataServices_Debug_Measurementblock_Channel_65_ReadData
+[       OK ] AppDcmHndlrMockFixture.AppDcmHndlr_DataServices_Debug_Measurementblock_Channel_65_ReadData (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.AppDcmHndlr_DataServices_Debug_Measurementblock_Channel_66_ReadData
+[       OK ] AppDcmHndlrMockFixture.AppDcmHndlr_DataServices_Debug_Measurementblock_Channel_66_ReadData (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.AppDcmHndlr_DataServices_Debug_Measurementblock_Channel_67_ReadData
+[       OK ] AppDcmHndlrMockFixture.AppDcmHndlr_DataServices_Debug_Measurementblock_Channel_67_ReadData (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.AppDcmHndlr_DataServices_Debug_Measurementblock_Channel_103_ReadData
+[       OK ] AppDcmHndlrMockFixture.AppDcmHndlr_DataServices_Debug_Measurementblock_Channel_103_ReadData (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.AppDcmHndlr_DataServices_Debug_Measurementblock_Channel_104_ReadData
+[       OK ] AppDcmHndlrMockFixture.AppDcmHndlr_DataServices_Debug_Measurementblock_Channel_104_ReadData (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDF109
+[       OK ] AppDcmHndlrMockFixture.DIDF109 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD97
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD97 (1 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD98
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD98 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD99
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD99 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD9A
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD9A (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD9B
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD9B (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD9C
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD9C (1 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD9D
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD9D (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD9E
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD9E (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD9F
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD9F (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDDA0
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDDA0 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDDA1
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDDA1 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDDA2
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDDA2 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDDA3
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDDA3 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDDA4
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDDA4 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDDA5
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDDA5 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDDA6
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDDA6 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDDA7
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDDA7 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDDA8
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDDA8 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDDA9
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDDA9 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDDAA
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDDAA (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDDAB
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDDAB (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDDAC
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDDAC (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD80
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD80 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD81
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD81 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD82
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD82 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD83
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD83 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD84
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD84 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD85
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD85 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD86
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD86 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD87
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD87 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD88
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD88 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD89
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD89 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD8A
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD8A (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD8B
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD8B (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD8C
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD8C (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD8D
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD8D (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD8E
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD8E (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD8F
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD8F (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD90
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD90 (1 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD91
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD91 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD92
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD92 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD93
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD93 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD94
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD94 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD95
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD95 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDPBOTDD96
+[       OK ] AppDcmHndlrMockFixture.DIDPBOTDD96 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.DIDD05FTest
+[       OK ] AppDcmHndlrMockFixture.DIDD05FTest (0 ms)
+[----------] 145 tests from AppDcmHndlrMockFixture (767 ms total)
+
+[----------] Global test environment tear-down
+[==========] 145 tests from 1 test suite ran. (779 ms total)
+[  PASSED  ] 145 tests.
+[PASS] Tests passed.
+Deleted existing clones folder
+Created clones\c1\copy-1 for calculate_size (const uint8 *str, uint8 max_length) mutant-1
+Injected mutation in: clones\c1\copy-1\rbx\AppData\AppDcmHndlr\src\AppDcmHndlr.c
+Created clones\c1\copy-2 for calculate_size (const uint8 *str, uint8 max_length) mutant-2
+Injected mutation in: clones\c1\copy-2\rbx\AppData\AppDcmHndlr\src\AppDcmHndlr.c
+Created clones\c1\copy-3 for calculate_size (const uint8 *str, uint8 max_length) mutant-3
+Injected mutation in: clones\c1\copy-3\rbx\AppData\AppDcmHndlr\src\AppDcmHndlr.c
+Created clones\c1\copy-4 for calculate_size (const uint8 *str, uint8 max_length) mutant-4
+Injected mutation in: clones\c1\copy-4\rbx\AppData\AppDcmHndlr\src\AppDcmHndlr.c
+Created clones\c1\copy-5 for calculate_size (const uint8 *str, uint8 max_length) mutant-5
+Injected mutation in: clones\c1\copy-5\rbx\AppData\AppDcmHndlr\src\AppDcmHndlr.c
+Created clones\c1\copy-6 for calculate_size (const uint8 *str, uint8 max_length) mutant-6
+Injected mutation in: clones\c1\copy-6\rbx\AppData\AppDcmHndlr\src\AppDcmHndlr.c
+Updated mutant JSON file.
+Deleted existing logs folder
+[INFO] Running GTEST clones in PARALLEL...
+Running tests in clones\c1\copy-1
+Running tests in clones\c1\copy-2
+Running tests in clones\c1\copy-3
+Running tests in clones\c1\copy-4
+Running tests in clones\c1\copy-5
+Running tests in clones\c1\copy-6
+[INFO] Finished GTest parallel execution.
+Deleted existing temp folder
+JSON report saved: temp\c1.json
+HTML report generated at: temp\mutation_report.html
+=== Mutation pipeline completed successfully ===
+
+============================================================
+  PIPELINE COMPLETE
+============================================================
+  Mutants file:   mutants_output\mutants_20260529_164137.json
+  Total mutants:  6
+    calculate_size (const uint8 *str, uint8 max_length): 6 mutants
+------------------------------------------------------------
+  Survived:       2
+  Killed:         4
+  Build Error:    0
+  Mutation Score: 66.67%
+------------------------------------------------------------
+  Results file:   temp\mutation_report.html
+============================================================

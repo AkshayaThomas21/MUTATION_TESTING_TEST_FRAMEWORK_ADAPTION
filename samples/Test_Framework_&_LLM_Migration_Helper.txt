@@ -1,0 +1,61 @@
+The tests are not run directly using Python.
+In the pipeline, for every mutant, the project is cloned separately. Then the mutated C code is added into that clone. After that, build and test script is executed in that cloned project using cmd.exe /c.
+
+This flow is handled inside gtest_runner.py line.
+
+Before running the script, the pipeline sets the TEST_TARGET variable (if available), so the script knows which test binary to build and run.
+
+After execution, the result of each mutant is decided by checking the test output log.
+
+Based on that, each mutant is marked as:
+- Survived
+- Killed
+- Build-error
+
+This result classification happens in gtest_runner.py line-302.
+
+If you want to change from GTest to another testing framework, you mainly need to update 3 areas:
+
+1. Test case extraction
+In testcase_extractor.py line-60, currently it looks for .cpp files and extracts GTest-style test cases.
+You need to modify this logic to match the new framework format.
+
+2. Build and test script
+You need to update your script to build and run tests for that specific test framework.
+you need to change build, execution, and result-checking logic based on your specific framework.
+
+Output (log or report) should be in a format that your system can understand.
+
+If you want to reuse provided sample .cmd script for GTEST, mainly you need to update below w.r.t your local compiler setup and project configurations. 
+
+- Compiler path
+- CMake generator
+- Test target naming
+- Executable path
+- CMake target name
+- Test framework output handling
+
+3. Result parsing
+In gtest_runner.py line-302, results are currently parsed based on:
+
+GTest XML
+or PASS/FAIL patterns
+
+You need to change this logic to parse results from the new framework output.
+
+NOTE:
+Apart from these changes, the rest of the mutation flow can remain same:
+- Project cloning
+- Mutant injection
+- Execution pipeline
+
+--------------------------------------------------------------------------------------
+
+llm_runnable.py : This script is flexible, we can switch any LLM by just changing
+model initialization without changing pipeline logic
+
+To switch LLM:
+
+1. Change import in llm_runnable.py line-3
+2. Change LLM initialization in llm_runnable.py line-14
+3. Update environment variables in .env file

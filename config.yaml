@@ -1,0 +1,37 @@
+mutation:
+  project_path_folder: path_to_project_root
+  source_file_in_workspace: true
+  source_file: path_to_source_file
+  test_case_folder: path_to_test_case_folder
+  output_dir: mutants_output
+  recursion_limit: 2
+  script_path: path_to_script
+
+# ----------------------------------------------------------------------------
+# Area-2 (Phase 2) — Framework-Agnostic Gateway + Quality Signal Engine
+# ----------------------------------------------------------------------------
+area2:
+  # Which framework adapter to use. One of the registered adapters:
+  #   gtest | unity | cpputest | pytest | vectorcast | bosch | robot (spec-only)
+  # or leave blank to auto-detect from the test file extensions.
+  framework: gtest
+
+  # Use Azure OpenAI for root-cause + synthesis (true), or heuristic-only (false).
+  use_llm: true
+
+  project_name: "Powertrain ECU Module"
+
+  # CI/CD quality gate thresholds.
+  gate:
+    min_mutation_score: 60      # hard fail below this
+    warn_mutation_score: 75     # warn below this
+    max_flakiness: 2.0
+    max_hallucination_rate: 5.0
+    min_success_rate: 98.0
+    critical_module: false      # if true, requires >= 80 mutation score
+
+  # Continuous improvement loop: re-generate + re-run until target reached.
+  feedback_loop:
+    enabled: true
+    target_mutation_score: 85
+    max_iterations: 3

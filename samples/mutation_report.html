@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mutation Test Report</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
+    h1 { color: #333; }
+    .function-block { background-color: #fff; border: 1px solid #ddd; border-left: 5px solid #4CAF50; padding: 20px; margin-bottom: 20px; }
+    .function-name { font-size: 1.2em; color: #333; }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+    th, td { border: 1px solid #999; padding: 8px; text-align: left; vertical-align: top; }
+    th { background-color: royalblue; color: white; }
+    .code-block { background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace; white-space: pre-wrap; }
+    .log-block { background-color: #222; color: #eee; padding: 10px; border-radius: 5px; font-family: monospace; white-space: pre-wrap; max-height: 300px; overflow-y: auto; }
+</style>
+</head>
+<body>
+<h1>Mutation Test Report</h1>
+<h4>Generated on: 29/05/2026, 04:46:16 PM</h4>
+<hr>
+<h2>.c File: <code style="color: teal">AppDcmHndlr.c</code></h2>
+
+<div class="function-block">
+    <div class="function-name">Function: <code>calculate_size (const uint8 *str, uint8 max_length)</code></div>
+    <div>Testcase(s): TEST_F(AppDcmHndlrMockFixture, TestCalculateSize)
+{
+    // SW Unit Test Case Preconditions, Pre-Steps
+    struct
+    {
+        uint8 max_length;
+        uint8 str[64];
+        uint8 res;
+    }Tests[] = {{40u, "TestingSWVersion", 16u}, {20u, "TestingLengthGreaterThanMaxLength", 20u}};
+
+    for(auto &Test : Tests)
+    {
+      // SW Unit Test Case Execution, Function Calls
+      uint8 res = calculate_size(&Test.str[0], Test.max_length);
+
+      // SW Unit Test Case Expected Results
+      ASSERT_EQ(res,Test.res);
+    }
+
+},
+for(auto &Test : Tests)
+    {
+      // SW Unit Test Case Execution, Function Calls
+      uint8 res = calculate_size(&Test.str[0], Test.max_length);
+
+      // SW Unit Test Case Expected Results
+      ASSERT_EQ(res,Test.res);
+    }</div>
+    <hr>
+
+    <h3>Mutant #1</h3>
+    <table><tr><th>Original Code</th><th>Mutated Code</th></tr>
+    <tr><td><div class="code-block">while((str[length]!= (uint8)'\0') && (length < max_length))</div></td>
+        <td><div class="code-block">while((str[length]!= (uint8)'\0') && (length <= max_length))</div></td></tr></table>
+    <p>Category: <strong>Relational Operator Replacement</strong></p>
+    <p>Status: <strong style="color:green">Killed</strong></p>
+<div class="log-block">[INFO] Building full project...
+[  3%] Building C object rbx/AppData/IntFaultHndlr/tst/UT_GTB_IntFaultHndlr/CMakeFiles/UT_IntFaultHndlr.dir/__/__/src/IntFaultHndlr.c.obj
+[  6%] Building CXX object rbx/AppData/IntFaultHndlr/tst/UT_GTB_IntFaultHndlr/CMakeFiles/UT_IntFaultHndlr.dir/Mock/mock.cpp.obj
+[  9%] Building CXX object rbx/AppData/IntFaultHndlr/tst/UT_GTB_IntFaultHndlr/CMakeFiles/UT_IntFaultHndlr.dir/Testcases/UT_IntFaultHndlr.cpp.obj
+[ 12%] Linking CXX executable ..\..\..\..\..\host\UT_IntFaultHndlr.exe
+[ 12%] Built target UT_IntFaultHndlr
+[ 15%] Building C object rbx/AppData/CalPrmHndlr/tst/UT_GTB_CalPrmHndlr/CMakeFiles/UT_CalPrmHndlr.dir/__/__/src/CalPrmHndlr.c.obj
+[ 18%] Building CXX object rbx/AppData/CalPrmHndlr/tst/UT_GTB_CalPrmHndlr/CMakeFiles/UT_CalPrmHndlr.dir/Mock/mock.cpp.obj
+[ 21%] Building CXX object rbx/AppData/CalPrmHndlr/tst/UT_GTB_CalPrmHndlr/CMakeFiles/UT_CalPrmHndlr.dir/Testcases/UT_CalPrmHndlr.cpp.obj
+[ 25%] Linking CXX executable ..\..\..\..\..\host\UT_CalPrmHndlr.exe
+[ 25%] Built target UT_CalPrmHndlr
+[ 28%] Building C object rbx/AppData/ProtdDataConv/tst/UT_GTB_ProtdDataConv/CMakeFiles/UT_ProtdDataConv.dir/__/__/src/ProtdDataConv.c.obj
+[ 31%] Building CXX object rbx/AppData/ProtdDataConv/tst/UT_GTB_ProtdDataConv/CMakeFiles/UT_ProtdDataConv.dir/Mock/mock.cpp.obj
+[ 34%] Building CXX object rbx/AppData/ProtdDataConv/tst/UT_GTB_ProtdDataConv/CMakeFiles/UT_ProtdDataConv.dir/Testcases/UT_ProtdDataConv.cpp.obj
+[ 37%] Linking CXX executable ..\..\..\..\..\host\UT_ProtdDataConv.exe
+[ 37%] Built target UT_ProtdDataConv
+[ 40%] Building C object rbx/AppData/ComDataConv/tst/UT_GTB_ComDataConv/CMakeFiles/UT_ComDataConv.dir/__/__/src/ComDataConv.c.obj
+[ 43%] Building CXX object rbx/AppData/ComDataConv/tst/UT_GTB_ComDataConv/CMakeFiles/UT_ComDataConv.dir/Mock/mock.cpp.obj
+[ 46%] Building CXX object rbx/AppData/ComDataConv/tst/UT_GTB_ComDataConv/CMakeFiles/UT_ComDataConv.dir/Testcases/UT_ComDataConv.cpp.obj
+[ 50%] Linking CXX executable ..\..\..\..\..\host\UT_ComDataConv.exe
+[ 50%] Built target UT_ComDataConv
+[ 53%] Building C object rbx/AppData/DebugMsgDataConv/tst/UT_GTB_DebugMsgDataConv/CMakeFiles/UT_DebugMsgDataConv.dir/__/__/src/DebugMsgDataConv.c.obj
+[ 56%] Building CXX object rbx/AppData/DebugMsgDataConv/tst/UT_GTB_DebugMsgDataConv/CMakeFiles/UT_DebugMsgDataConv.dir/Mock/mock.cpp.obj
+[ 59%] Building CXX object rbx/AppData/DebugMsgDataConv/tst/UT_GTB_DebugMsgDataConv/CMakeFiles/UT_DebugMsgDataConv.dir/Testcases/UT_DebugMsgDataConv.cpp.obj
+[ 62%] Linking CXX executable ..\..\..\..\..\host\UT_DebugMsgDataConv.exe
+[ 62%] Built target UT_DebugMsgDataConv
+[ 65%] Building C object rbx/AppData/SwcParsedHndlr/tst/UT_GTB_SwcParsedHndlr/CMakeFiles/UT_SwcParsedHndlr.dir/__/__/src/SwcParsedHndlr.c.obj
+[ 68%] Building CXX object rbx/AppData/SwcParsedHndlr/tst/UT_GTB_SwcParsedHndlr/CMakeFiles/UT_SwcParsedHndlr.dir/mock/mock.cpp.obj
+[ 71%] Building CXX object rbx/AppData/SwcParsedHndlr/tst/UT_GTB_SwcParsedHndlr/CMakeFiles/UT_SwcParsedHndlr.dir/Testcases/UT_SwcParsedHndlr.cpp.obj
+[ 75%] Linking CXX executable ..\..\..\..\..\host\UT_SwcParsedHndlr.exe
+[ 75%] Built target UT_SwcParsedHndlr
+[ 78%] Building C object rbx/AppData/AppDcmHndlr/tst/UT_GTB_AppDcmHndlr/CMakeFiles/UT_AppDcmHndlr.dir/__/__/src/AppDcmHndlr.c.obj
+[ 81%] Building CXX object rbx/AppData/AppDcmHndlr/tst/UT_GTB_AppDcmHndlr/CMakeFiles/UT_AppDcmHndlr.dir/Mock/mock.cpp.obj
+[ 84%] Building CXX object rbx/AppData/AppDcmHndlr/tst/UT_GTB_AppDcmHndlr/CMakeFiles/UT_AppDcmHndlr.dir/Testcases/UT_AppDcmHndlr.cpp.obj
+[ 87%] Linking CXX executable ..\..\..\..\..\host\UT_AppDcmHndlr.exe
+[ 87%] Built target UT_AppDcmHndlr
+[ 90%] Building C object rbx/AppData/NvmBlockHndlr/tst/UT_GTB_NvmBlockHndlr/CMakeFiles/UT_NvmBlockHndlr.dir/__/__/src/NvmBlockHndlr.c.obj
+[ 93%] Building CXX object rbx/AppData/NvmBlockHndlr/tst/UT_GTB_NvmBlockHndlr/CMakeFiles/UT_NvmBlockHndlr.dir/Mock/mock.cpp.obj
+[ 96%] Building CXX object rbx/AppData/NvmBlockHndlr/tst/UT_GTB_NvmBlockHndlr/CMakeFiles/UT_NvmBlockHndlr.dir/Testcases/UT_NvmBlockHndlr.cpp.obj
+[100%] Linking CXX executable ..\..\..\..\..\host\UT_NvmBlockHndlr.exe
+[100%] Built target UT_NvmBlockHndlr
+[INFO] Building test target: UT_AppDcmHndlr
+Consolidate compiler generated dependencies of target UT_AppDcmHndlr
+[100%] Built target UT_AppDcmHndlr
+[INFO] Running test binary: build\host\UT_AppDcmHndlr.exe
+Running main() from C:\Users\mfr2abt\.conan\data\gtest\cci.20210126\_\_\build\0751861366278f33f0083eccf7c8108ccc2fc771\source_subfolder\googletest\src\gtest_main.cc
+[==========] Running 145 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 145 tests from AppDcmHndlrMockFixture
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDataDIAGONIfPositive
+[       OK ] AppDcmHndlrMockFixture.TestReadDataDIAGONIfPositive (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDataDIAGONIFNegative
+[       OK ] AppDcmHndlrMockFixture.TestReadDataDIAGONIFNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDataNegative
+[       OK ] AppDcmHndlrMockFixture.TestReadDataNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMInitial
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMInitial (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending2
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending2 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending3
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending3 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDefaultCase
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDefaultCase (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitial
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitial (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitialBranchTest
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitialBranchTest (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPending
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPending (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingIf
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingIf (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElseIf
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElseIf (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElse
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMDefaultCase
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMDefaultCase (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestInitProc
+[       OK ] AppDcmHndlrMockFixture.TestInitProc (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5ms
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5ms (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msNegative
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msNegative2
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msNegative2 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msCoverage
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msCoverage (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msElse
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF113
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF113 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC01C
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC01C (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC021
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC021 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF18Cfunc
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF18Cfunc (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF163func
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF163func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF111func
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF111func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF110func
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF110func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDReadSecureMessagePayload
+[       OK ] AppDcmHndlrMockFixture.TestDIDReadSecureMessagePayload (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDReadFreshnessValueManagerPayload
+[       OK ] AppDcmHndlrMockFixture.TestDIDReadFreshnessValueManagerPayload (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDReadCANMessageAuthentication
+[       OK ] AppDcmHndlrMockFixture.TestDIDReadCANMessageAuthentication (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestStartRoutine0212func
+[       OK ] AppDcmHndlrMockFixture.TestStartRoutine0212func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestStartRoutine0212funcElse
+[       OK ] AppDcmHndlrMockFixture.TestStartRoutine0212funcElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestStartRoutine0232func
+[       OK ] AppDcmHndlrMockFixture.TestStartRoutine0232func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC023
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC023 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC028
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC028 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TesthexDigitToChar
+[       OK ] AppDcmHndlrMockFixture.TesthexDigitToChar (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TesthexToString
+[       OK ] AppDcmHndlrMockFixture.TesthexToString (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestSecurityBufferReset
+[       OK ] AppDcmHndlrMockFixture.TestSecurityBufferReset (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestSecurityBuffersreset1
+[       OK ] AppDcmHndlrMockFixture.TestSecurityBuffersreset1 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC03B
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC03B (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC03BElse
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC03BElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC03BNegative
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC03BNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC039
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC039 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC039Else
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC039Else (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC039Negative
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC039Negative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC021
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC021 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC01C
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC01C (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC023
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC023 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC028
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC028 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDC03C
+[       OK ] AppDcmHndlrMockFixture.TestDIDC03C (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDC03CElse
+[       OK ] AppDcmHndlrMockFixture.TestDIDC03CElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDC03CNegative
+[       OK ] AppDcmHndlrMockFixture.TestDIDC03CNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestCompareArray
+[       OK ] AppDcmHndlrMockFixture.TestCompareArray (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestCalculateSize
+C:\Users\kos1hyd\workspace\V&V\Mutation_Test_AI\clones\c1\copy-1\rbx\AppData\AppDcmHndlr\tst\UT_GTB_AppDcmHndlr\Testcases\UT_AppDcmHndlr.cpp:2240: Failure
+Expected equality of these values:
+  res
+    Which is: '\x15' (21)
+  Test.res
+    Which is: '\x14' (20)
+[  FAILED  ] AppDcmHndlrMockFixture.TestCalculateSize (0 ms)</div>
+    <h3>Mutant #2</h3>
+    <table><tr><th>Original Code</th><th>Mutated Code</th></tr>
+    <tr><td><div class="code-block">while((str[length]!= (uint8)'\0') && (length < max_length))</div></td>
+        <td><div class="code-block">while((str[length]!= (uint8)'\0') || (length < max_length))</div></td></tr></table>
+    <p>Category: <strong>Logical Connector Mutation</strong></p>
+    <p>Status: <strong style="color:green">Killed</strong></p>
+<div class="log-block">[INFO] Building full project...
+[  3%] Building C object rbx/AppData/IntFaultHndlr/tst/UT_GTB_IntFaultHndlr/CMakeFiles/UT_IntFaultHndlr.dir/__/__/src/IntFaultHndlr.c.obj
+[  6%] Building CXX object rbx/AppData/IntFaultHndlr/tst/UT_GTB_IntFaultHndlr/CMakeFiles/UT_IntFaultHndlr.dir/Mock/mock.cpp.obj
+[  9%] Building CXX object rbx/AppData/IntFaultHndlr/tst/UT_GTB_IntFaultHndlr/CMakeFiles/UT_IntFaultHndlr.dir/Testcases/UT_IntFaultHndlr.cpp.obj
+[ 12%] Linking CXX executable ..\..\..\..\..\host\UT_IntFaultHndlr.exe
+[ 12%] Built target UT_IntFaultHndlr
+[ 15%] Building C object rbx/AppData/CalPrmHndlr/tst/UT_GTB_CalPrmHndlr/CMakeFiles/UT_CalPrmHndlr.dir/__/__/src/CalPrmHndlr.c.obj
+[ 18%] Building CXX object rbx/AppData/CalPrmHndlr/tst/UT_GTB_CalPrmHndlr/CMakeFiles/UT_CalPrmHndlr.dir/Mock/mock.cpp.obj
+[ 21%] Building CXX object rbx/AppData/CalPrmHndlr/tst/UT_GTB_CalPrmHndlr/CMakeFiles/UT_CalPrmHndlr.dir/Testcases/UT_CalPrmHndlr.cpp.obj
+[ 25%] Linking CXX executable ..\..\..\..\..\host\UT_CalPrmHndlr.exe
+[ 25%] Built target UT_CalPrmHndlr
+[ 28%] Building C object rbx/AppData/ProtdDataConv/tst/UT_GTB_ProtdDataConv/CMakeFiles/UT_ProtdDataConv.dir/__/__/src/ProtdDataConv.c.obj
+[ 31%] Building CXX object rbx/AppData/ProtdDataConv/tst/UT_GTB_ProtdDataConv/CMakeFiles/UT_ProtdDataConv.dir/Mock/mock.cpp.obj
+[ 34%] Building CXX object rbx/AppData/ProtdDataConv/tst/UT_GTB_ProtdDataConv/CMakeFiles/UT_ProtdDataConv.dir/Testcases/UT_ProtdDataConv.cpp.obj
+[ 37%] Linking CXX executable ..\..\..\..\..\host\UT_ProtdDataConv.exe
+[ 37%] Built target UT_ProtdDataConv
+[ 40%] Building C object rbx/AppData/ComDataConv/tst/UT_GTB_ComDataConv/CMakeFiles/UT_ComDataConv.dir/__/__/src/ComDataConv.c.obj
+[ 43%] Building CXX object rbx/AppData/ComDataConv/tst/UT_GTB_ComDataConv/CMakeFiles/UT_ComDataConv.dir/Mock/mock.cpp.obj
+[ 46%] Building CXX object rbx/AppData/ComDataConv/tst/UT_GTB_ComDataConv/CMakeFiles/UT_ComDataConv.dir/Testcases/UT_ComDataConv.cpp.obj
+[ 50%] Linking CXX executable ..\..\..\..\..\host\UT_ComDataConv.exe
+[ 50%] Built target UT_ComDataConv
+[ 53%] Building C object rbx/AppData/DebugMsgDataConv/tst/UT_GTB_DebugMsgDataConv/CMakeFiles/UT_DebugMsgDataConv.dir/__/__/src/DebugMsgDataConv.c.obj
+[ 56%] Building CXX object rbx/AppData/DebugMsgDataConv/tst/UT_GTB_DebugMsgDataConv/CMakeFiles/UT_DebugMsgDataConv.dir/Mock/mock.cpp.obj
+[ 59%] Building CXX object rbx/AppData/DebugMsgDataConv/tst/UT_GTB_DebugMsgDataConv/CMakeFiles/UT_DebugMsgDataConv.dir/Testcases/UT_DebugMsgDataConv.cpp.obj
+[ 62%] Linking CXX executable ..\..\..\..\..\host\UT_DebugMsgDataConv.exe
+[ 62%] Built target UT_DebugMsgDataConv
+[ 65%] Building C object rbx/AppData/SwcParsedHndlr/tst/UT_GTB_SwcParsedHndlr/CMakeFiles/UT_SwcParsedHndlr.dir/__/__/src/SwcParsedHndlr.c.obj
+[ 68%] Building CXX object rbx/AppData/SwcParsedHndlr/tst/UT_GTB_SwcParsedHndlr/CMakeFiles/UT_SwcParsedHndlr.dir/mock/mock.cpp.obj
+[ 71%] Building CXX object rbx/AppData/SwcParsedHndlr/tst/UT_GTB_SwcParsedHndlr/CMakeFiles/UT_SwcParsedHndlr.dir/Testcases/UT_SwcParsedHndlr.cpp.obj
+[ 75%] Linking CXX executable ..\..\..\..\..\host\UT_SwcParsedHndlr.exe
+[ 75%] Built target UT_SwcParsedHndlr
+[ 78%] Building C object rbx/AppData/AppDcmHndlr/tst/UT_GTB_AppDcmHndlr/CMakeFiles/UT_AppDcmHndlr.dir/__/__/src/AppDcmHndlr.c.obj
+[ 81%] Building CXX object rbx/AppData/AppDcmHndlr/tst/UT_GTB_AppDcmHndlr/CMakeFiles/UT_AppDcmHndlr.dir/Mock/mock.cpp.obj
+[ 84%] Building CXX object rbx/AppData/AppDcmHndlr/tst/UT_GTB_AppDcmHndlr/CMakeFiles/UT_AppDcmHndlr.dir/Testcases/UT_AppDcmHndlr.cpp.obj
+[ 87%] Linking CXX executable ..\..\..\..\..\host\UT_AppDcmHndlr.exe
+[ 87%] Built target UT_AppDcmHndlr
+[ 90%] Building C object rbx/AppData/NvmBlockHndlr/tst/UT_GTB_NvmBlockHndlr/CMakeFiles/UT_NvmBlockHndlr.dir/__/__/src/NvmBlockHndlr.c.obj
+[ 93%] Building CXX object rbx/AppData/NvmBlockHndlr/tst/UT_GTB_NvmBlockHndlr/CMakeFiles/UT_NvmBlockHndlr.dir/Mock/mock.cpp.obj
+[ 96%] Building CXX object rbx/AppData/NvmBlockHndlr/tst/UT_GTB_NvmBlockHndlr/CMakeFiles/UT_NvmBlockHndlr.dir/Testcases/UT_NvmBlockHndlr.cpp.obj
+[100%] Linking CXX executable ..\..\..\..\..\host\UT_NvmBlockHndlr.exe
+[100%] Built target UT_NvmBlockHndlr
+[INFO] Building test target: UT_AppDcmHndlr
+Consolidate compiler generated dependencies of target UT_AppDcmHndlr
+[100%] Built target UT_AppDcmHndlr
+[INFO] Running test binary: build\host\UT_AppDcmHndlr.exe
+Running main() from C:\Users\mfr2abt\.conan\data\gtest\cci.20210126\_\_\build\0751861366278f33f0083eccf7c8108ccc2fc771\source_subfolder\googletest\src\gtest_main.cc
+[==========] Running 145 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 145 tests from AppDcmHndlrMockFixture
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDataDIAGONIfPositive
+[       OK ] AppDcmHndlrMockFixture.TestReadDataDIAGONIfPositive (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDataDIAGONIFNegative
+[       OK ] AppDcmHndlrMockFixture.TestReadDataDIAGONIFNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDataNegative
+[       OK ] AppDcmHndlrMockFixture.TestReadDataNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMInitial
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMInitial (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending2
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending2 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending3
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending3 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDefaultCase
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDefaultCase (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitial
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitial (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitialBranchTest
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitialBranchTest (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPending
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPending (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingIf
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingIf (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElseIf
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElseIf (10 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElse
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMDefaultCase
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMDefaultCase (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestInitProc
+[       OK ] AppDcmHndlrMockFixture.TestInitProc (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5ms
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5ms (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msNegative
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msNegative2
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msNegative2 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msCoverage
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msCoverage (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msElse
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF113
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF113 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC01C
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC01C (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC021
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC021 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF18Cfunc
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF18Cfunc (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF163func
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF163func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF111func
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF111func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF110func
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF110func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDReadSecureMessagePayload
+[       OK ] AppDcmHndlrMockFixture.TestDIDReadSecureMessagePayload (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDReadFreshnessValueManagerPayload
+[       OK ] AppDcmHndlrMockFixture.TestDIDReadFreshnessValueManagerPayload (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDReadCANMessageAuthentication
+[       OK ] AppDcmHndlrMockFixture.TestDIDReadCANMessageAuthentication (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestStartRoutine0212func
+[       OK ] AppDcmHndlrMockFixture.TestStartRoutine0212func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestStartRoutine0212funcElse
+[       OK ] AppDcmHndlrMockFixture.TestStartRoutine0212funcElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestStartRoutine0232func
+[       OK ] AppDcmHndlrMockFixture.TestStartRoutine0232func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC023
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC023 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC028
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC028 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TesthexDigitToChar
+[       OK ] AppDcmHndlrMockFixture.TesthexDigitToChar (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TesthexToString
+[       OK ] AppDcmHndlrMockFixture.TesthexToString (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestSecurityBufferReset
+[       OK ] AppDcmHndlrMockFixture.TestSecurityBufferReset (2 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestSecurityBuffersreset1
+[       OK ] AppDcmHndlrMockFixture.TestSecurityBuffersreset1 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC03B
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC03B (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC03BElse
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC03BElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC03BNegative
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC03BNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC039
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC039 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC039Else
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC039Else (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC039Negative
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC039Negative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC021
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC021 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC01C
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC01C (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC023
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC023 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC028
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC028 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDC03C
+[       OK ] AppDcmHndlrMockFixture.TestDIDC03C (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDC03CElse
+[       OK ] AppDcmHndlrMockFixture.TestDIDC03CElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDC03CNegative
+[       OK ] AppDcmHndlrMockFixture.TestDIDC03CNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestCompareArray
+[       OK ] AppDcmHndlrMockFixture.TestCompareArray (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestCalculateSize
+C:\Users\kos1hyd\workspace\V&V\Mutation_Test_AI\clones\c1\copy-2\rbx\AppData\AppDcmHndlr\tst\UT_GTB_AppDcmHndlr\Testcases\UT_AppDcmHndlr.cpp:2240: Failure
+Expected equality of these values:
+  res
+    Which is: '(' (40, 0x28)
+  Test.res
+    Which is: '\x10' (16)
+[  FAILED  ] AppDcmHndlrMockFixture.TestCalculateSize (0 ms)</div>
+    <h3>Mutant #3</h3>
+    <table><tr><th>Original Code</th><th>Mutated Code</th></tr>
+    <tr><td><div class="code-block">uint8 length = 0u;</div></td>
+        <td><div class="code-block">uint8 length = (max_length == 0u) ? 1u : 0u;</div></td></tr></table>
+    <p>Category: <strong>Conditional Initialization Mutation</strong></p>
+    <p>Status: <strong style="color:red">Survived</strong></p>
+
+    <h3>Mutant #4</h3>
+    <table><tr><th>Original Code</th><th>Mutated Code</th></tr>
+    <tr><td><div class="code-block">while((str[length]!= (uint8)'\0') && (length < max_length))</div></td>
+        <td><div class="code-block">while((str[length]!= (uint8)'\0') && (length + 1u < max_length))</div></td></tr></table>
+    <p>Category: <strong>Off-by-One Boundary Mutation</strong></p>
+    <p>Status: <strong style="color:green">Killed</strong></p>
+<div class="log-block">[INFO] Building full project...
+[  3%] Building C object rbx/AppData/IntFaultHndlr/tst/UT_GTB_IntFaultHndlr/CMakeFiles/UT_IntFaultHndlr.dir/__/__/src/IntFaultHndlr.c.obj
+[  6%] Building CXX object rbx/AppData/IntFaultHndlr/tst/UT_GTB_IntFaultHndlr/CMakeFiles/UT_IntFaultHndlr.dir/Mock/mock.cpp.obj
+[  9%] Building CXX object rbx/AppData/IntFaultHndlr/tst/UT_GTB_IntFaultHndlr/CMakeFiles/UT_IntFaultHndlr.dir/Testcases/UT_IntFaultHndlr.cpp.obj
+[ 12%] Linking CXX executable ..\..\..\..\..\host\UT_IntFaultHndlr.exe
+[ 12%] Built target UT_IntFaultHndlr
+[ 15%] Building C object rbx/AppData/CalPrmHndlr/tst/UT_GTB_CalPrmHndlr/CMakeFiles/UT_CalPrmHndlr.dir/__/__/src/CalPrmHndlr.c.obj
+[ 18%] Building CXX object rbx/AppData/CalPrmHndlr/tst/UT_GTB_CalPrmHndlr/CMakeFiles/UT_CalPrmHndlr.dir/Mock/mock.cpp.obj
+[ 21%] Building CXX object rbx/AppData/CalPrmHndlr/tst/UT_GTB_CalPrmHndlr/CMakeFiles/UT_CalPrmHndlr.dir/Testcases/UT_CalPrmHndlr.cpp.obj
+[ 25%] Linking CXX executable ..\..\..\..\..\host\UT_CalPrmHndlr.exe
+[ 25%] Built target UT_CalPrmHndlr
+[ 28%] Building C object rbx/AppData/ProtdDataConv/tst/UT_GTB_ProtdDataConv/CMakeFiles/UT_ProtdDataConv.dir/__/__/src/ProtdDataConv.c.obj
+[ 31%] Building CXX object rbx/AppData/ProtdDataConv/tst/UT_GTB_ProtdDataConv/CMakeFiles/UT_ProtdDataConv.dir/Mock/mock.cpp.obj
+[ 34%] Building CXX object rbx/AppData/ProtdDataConv/tst/UT_GTB_ProtdDataConv/CMakeFiles/UT_ProtdDataConv.dir/Testcases/UT_ProtdDataConv.cpp.obj
+[ 37%] Linking CXX executable ..\..\..\..\..\host\UT_ProtdDataConv.exe
+[ 37%] Built target UT_ProtdDataConv
+[ 40%] Building C object rbx/AppData/ComDataConv/tst/UT_GTB_ComDataConv/CMakeFiles/UT_ComDataConv.dir/__/__/src/ComDataConv.c.obj
+[ 43%] Building CXX object rbx/AppData/ComDataConv/tst/UT_GTB_ComDataConv/CMakeFiles/UT_ComDataConv.dir/Mock/mock.cpp.obj
+[ 46%] Building CXX object rbx/AppData/ComDataConv/tst/UT_GTB_ComDataConv/CMakeFiles/UT_ComDataConv.dir/Testcases/UT_ComDataConv.cpp.obj
+[ 50%] Linking CXX executable ..\..\..\..\..\host\UT_ComDataConv.exe
+[ 50%] Built target UT_ComDataConv
+[ 53%] Building C object rbx/AppData/DebugMsgDataConv/tst/UT_GTB_DebugMsgDataConv/CMakeFiles/UT_DebugMsgDataConv.dir/__/__/src/DebugMsgDataConv.c.obj
+[ 56%] Building CXX object rbx/AppData/DebugMsgDataConv/tst/UT_GTB_DebugMsgDataConv/CMakeFiles/UT_DebugMsgDataConv.dir/Mock/mock.cpp.obj
+[ 59%] Building CXX object rbx/AppData/DebugMsgDataConv/tst/UT_GTB_DebugMsgDataConv/CMakeFiles/UT_DebugMsgDataConv.dir/Testcases/UT_DebugMsgDataConv.cpp.obj
+[ 62%] Linking CXX executable ..\..\..\..\..\host\UT_DebugMsgDataConv.exe
+[ 62%] Built target UT_DebugMsgDataConv
+[ 65%] Building C object rbx/AppData/SwcParsedHndlr/tst/UT_GTB_SwcParsedHndlr/CMakeFiles/UT_SwcParsedHndlr.dir/__/__/src/SwcParsedHndlr.c.obj
+[ 68%] Building CXX object rbx/AppData/SwcParsedHndlr/tst/UT_GTB_SwcParsedHndlr/CMakeFiles/UT_SwcParsedHndlr.dir/mock/mock.cpp.obj
+[ 71%] Building CXX object rbx/AppData/SwcParsedHndlr/tst/UT_GTB_SwcParsedHndlr/CMakeFiles/UT_SwcParsedHndlr.dir/Testcases/UT_SwcParsedHndlr.cpp.obj
+[ 75%] Linking CXX executable ..\..\..\..\..\host\UT_SwcParsedHndlr.exe
+[ 75%] Built target UT_SwcParsedHndlr
+[ 78%] Building C object rbx/AppData/AppDcmHndlr/tst/UT_GTB_AppDcmHndlr/CMakeFiles/UT_AppDcmHndlr.dir/__/__/src/AppDcmHndlr.c.obj
+[ 81%] Building CXX object rbx/AppData/AppDcmHndlr/tst/UT_GTB_AppDcmHndlr/CMakeFiles/UT_AppDcmHndlr.dir/Mock/mock.cpp.obj
+[ 84%] Building CXX object rbx/AppData/AppDcmHndlr/tst/UT_GTB_AppDcmHndlr/CMakeFiles/UT_AppDcmHndlr.dir/Testcases/UT_AppDcmHndlr.cpp.obj
+[ 87%] Linking CXX executable ..\..\..\..\..\host\UT_AppDcmHndlr.exe
+[ 87%] Built target UT_AppDcmHndlr
+[ 90%] Building C object rbx/AppData/NvmBlockHndlr/tst/UT_GTB_NvmBlockHndlr/CMakeFiles/UT_NvmBlockHndlr.dir/__/__/src/NvmBlockHndlr.c.obj
+[ 93%] Building CXX object rbx/AppData/NvmBlockHndlr/tst/UT_GTB_NvmBlockHndlr/CMakeFiles/UT_NvmBlockHndlr.dir/Mock/mock.cpp.obj
+[ 96%] Building CXX object rbx/AppData/NvmBlockHndlr/tst/UT_GTB_NvmBlockHndlr/CMakeFiles/UT_NvmBlockHndlr.dir/Testcases/UT_NvmBlockHndlr.cpp.obj
+[100%] Linking CXX executable ..\..\..\..\..\host\UT_NvmBlockHndlr.exe
+[100%] Built target UT_NvmBlockHndlr
+[INFO] Building test target: UT_AppDcmHndlr
+Consolidate compiler generated dependencies of target UT_AppDcmHndlr
+[100%] Built target UT_AppDcmHndlr
+[INFO] Running test binary: build\host\UT_AppDcmHndlr.exe
+Running main() from C:\Users\mfr2abt\.conan\data\gtest\cci.20210126\_\_\build\0751861366278f33f0083eccf7c8108ccc2fc771\source_subfolder\googletest\src\gtest_main.cc
+[==========] Running 145 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 145 tests from AppDcmHndlrMockFixture
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDataDIAGONIfPositive
+[       OK ] AppDcmHndlrMockFixture.TestReadDataDIAGONIfPositive (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDataDIAGONIFNegative
+[       OK ] AppDcmHndlrMockFixture.TestReadDataDIAGONIFNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDataNegative
+[       OK ] AppDcmHndlrMockFixture.TestReadDataNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMInitial
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMInitial (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending2
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending2 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending3
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending3 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDefaultCase
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDefaultCase (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitial
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitial (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitialBranchTest
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitialBranchTest (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPending
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPending (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingIf
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingIf (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElseIf
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElseIf (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElse
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMDefaultCase
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMDefaultCase (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestInitProc
+[       OK ] AppDcmHndlrMockFixture.TestInitProc (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5ms
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5ms (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msNegative
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msNegative2
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msNegative2 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msCoverage
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msCoverage (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msElse
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF113
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF113 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC01C
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC01C (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC021
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC021 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF18Cfunc
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF18Cfunc (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF163func
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF163func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF111func
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF111func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF110func
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF110func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDReadSecureMessagePayload
+[       OK ] AppDcmHndlrMockFixture.TestDIDReadSecureMessagePayload (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDReadFreshnessValueManagerPayload
+[       OK ] AppDcmHndlrMockFixture.TestDIDReadFreshnessValueManagerPayload (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDReadCANMessageAuthentication
+[       OK ] AppDcmHndlrMockFixture.TestDIDReadCANMessageAuthentication (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestStartRoutine0212func
+[       OK ] AppDcmHndlrMockFixture.TestStartRoutine0212func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestStartRoutine0212funcElse
+[       OK ] AppDcmHndlrMockFixture.TestStartRoutine0212funcElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestStartRoutine0232func
+[       OK ] AppDcmHndlrMockFixture.TestStartRoutine0232func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC023
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC023 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC028
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC028 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TesthexDigitToChar
+[       OK ] AppDcmHndlrMockFixture.TesthexDigitToChar (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TesthexToString
+[       OK ] AppDcmHndlrMockFixture.TesthexToString (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestSecurityBufferReset
+[       OK ] AppDcmHndlrMockFixture.TestSecurityBufferReset (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestSecurityBuffersreset1
+[       OK ] AppDcmHndlrMockFixture.TestSecurityBuffersreset1 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC03B
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC03B (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC03BElse
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC03BElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC03BNegative
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC03BNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC039
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC039 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC039Else
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC039Else (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC039Negative
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC039Negative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC021
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC021 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC01C
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC01C (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC023
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC023 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC028
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC028 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDC03C
+[       OK ] AppDcmHndlrMockFixture.TestDIDC03C (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDC03CElse
+[       OK ] AppDcmHndlrMockFixture.TestDIDC03CElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDC03CNegative
+[       OK ] AppDcmHndlrMockFixture.TestDIDC03CNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestCompareArray
+[       OK ] AppDcmHndlrMockFixture.TestCompareArray (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestCalculateSize
+C:\Users\kos1hyd\workspace\V&V\Mutation_Test_AI\clones\c1\copy-4\rbx\AppData\AppDcmHndlr\tst\UT_GTB_AppDcmHndlr\Testcases\UT_AppDcmHndlr.cpp:2240: Failure
+Expected equality of these values:
+  res
+    Which is: '\x13' (19)
+  Test.res
+    Which is: '\x14' (20)
+[  FAILED  ] AppDcmHndlrMockFixture.TestCalculateSize (0 ms)</div>
+    <h3>Mutant #5</h3>
+    <table><tr><th>Original Code</th><th>Mutated Code</th></tr>
+    <tr><td><div class="code-block">while((str[length]!= (uint8)'\0') && (length < max_length))</div></td>
+        <td><div class="code-block">while((str[length]!= (uint8)'\0') && (length < max_length - 1u))</div></td></tr></table>
+    <p>Category: <strong>Off-by-One Boundary Mutation</strong></p>
+    <p>Status: <strong style="color:green">Killed</strong></p>
+<div class="log-block">[INFO] Building full project...
+[  3%] Building C object rbx/AppData/IntFaultHndlr/tst/UT_GTB_IntFaultHndlr/CMakeFiles/UT_IntFaultHndlr.dir/__/__/src/IntFaultHndlr.c.obj
+[  6%] Building CXX object rbx/AppData/IntFaultHndlr/tst/UT_GTB_IntFaultHndlr/CMakeFiles/UT_IntFaultHndlr.dir/Mock/mock.cpp.obj
+[  9%] Building CXX object rbx/AppData/IntFaultHndlr/tst/UT_GTB_IntFaultHndlr/CMakeFiles/UT_IntFaultHndlr.dir/Testcases/UT_IntFaultHndlr.cpp.obj
+[ 12%] Linking CXX executable ..\..\..\..\..\host\UT_IntFaultHndlr.exe
+[ 12%] Built target UT_IntFaultHndlr
+[ 15%] Building C object rbx/AppData/CalPrmHndlr/tst/UT_GTB_CalPrmHndlr/CMakeFiles/UT_CalPrmHndlr.dir/__/__/src/CalPrmHndlr.c.obj
+[ 18%] Building CXX object rbx/AppData/CalPrmHndlr/tst/UT_GTB_CalPrmHndlr/CMakeFiles/UT_CalPrmHndlr.dir/Mock/mock.cpp.obj
+[ 21%] Building CXX object rbx/AppData/CalPrmHndlr/tst/UT_GTB_CalPrmHndlr/CMakeFiles/UT_CalPrmHndlr.dir/Testcases/UT_CalPrmHndlr.cpp.obj
+[ 25%] Linking CXX executable ..\..\..\..\..\host\UT_CalPrmHndlr.exe
+[ 25%] Built target UT_CalPrmHndlr
+[ 28%] Building C object rbx/AppData/ProtdDataConv/tst/UT_GTB_ProtdDataConv/CMakeFiles/UT_ProtdDataConv.dir/__/__/src/ProtdDataConv.c.obj
+[ 31%] Building CXX object rbx/AppData/ProtdDataConv/tst/UT_GTB_ProtdDataConv/CMakeFiles/UT_ProtdDataConv.dir/Mock/mock.cpp.obj
+[ 34%] Building CXX object rbx/AppData/ProtdDataConv/tst/UT_GTB_ProtdDataConv/CMakeFiles/UT_ProtdDataConv.dir/Testcases/UT_ProtdDataConv.cpp.obj
+[ 37%] Linking CXX executable ..\..\..\..\..\host\UT_ProtdDataConv.exe
+[ 37%] Built target UT_ProtdDataConv
+[ 40%] Building C object rbx/AppData/ComDataConv/tst/UT_GTB_ComDataConv/CMakeFiles/UT_ComDataConv.dir/__/__/src/ComDataConv.c.obj
+[ 43%] Building CXX object rbx/AppData/ComDataConv/tst/UT_GTB_ComDataConv/CMakeFiles/UT_ComDataConv.dir/Mock/mock.cpp.obj
+[ 46%] Building CXX object rbx/AppData/ComDataConv/tst/UT_GTB_ComDataConv/CMakeFiles/UT_ComDataConv.dir/Testcases/UT_ComDataConv.cpp.obj
+[ 50%] Linking CXX executable ..\..\..\..\..\host\UT_ComDataConv.exe
+[ 50%] Built target UT_ComDataConv
+[ 53%] Building C object rbx/AppData/DebugMsgDataConv/tst/UT_GTB_DebugMsgDataConv/CMakeFiles/UT_DebugMsgDataConv.dir/__/__/src/DebugMsgDataConv.c.obj
+[ 56%] Building CXX object rbx/AppData/DebugMsgDataConv/tst/UT_GTB_DebugMsgDataConv/CMakeFiles/UT_DebugMsgDataConv.dir/Mock/mock.cpp.obj
+[ 59%] Building CXX object rbx/AppData/DebugMsgDataConv/tst/UT_GTB_DebugMsgDataConv/CMakeFiles/UT_DebugMsgDataConv.dir/Testcases/UT_DebugMsgDataConv.cpp.obj
+[ 62%] Linking CXX executable ..\..\..\..\..\host\UT_DebugMsgDataConv.exe
+[ 62%] Built target UT_DebugMsgDataConv
+[ 65%] Building C object rbx/AppData/SwcParsedHndlr/tst/UT_GTB_SwcParsedHndlr/CMakeFiles/UT_SwcParsedHndlr.dir/__/__/src/SwcParsedHndlr.c.obj
+[ 68%] Building CXX object rbx/AppData/SwcParsedHndlr/tst/UT_GTB_SwcParsedHndlr/CMakeFiles/UT_SwcParsedHndlr.dir/mock/mock.cpp.obj
+[ 71%] Building CXX object rbx/AppData/SwcParsedHndlr/tst/UT_GTB_SwcParsedHndlr/CMakeFiles/UT_SwcParsedHndlr.dir/Testcases/UT_SwcParsedHndlr.cpp.obj
+[ 75%] Linking CXX executable ..\..\..\..\..\host\UT_SwcParsedHndlr.exe
+[ 75%] Built target UT_SwcParsedHndlr
+[ 78%] Building C object rbx/AppData/AppDcmHndlr/tst/UT_GTB_AppDcmHndlr/CMakeFiles/UT_AppDcmHndlr.dir/__/__/src/AppDcmHndlr.c.obj
+[ 81%] Building CXX object rbx/AppData/AppDcmHndlr/tst/UT_GTB_AppDcmHndlr/CMakeFiles/UT_AppDcmHndlr.dir/Mock/mock.cpp.obj
+[ 84%] Building CXX object rbx/AppData/AppDcmHndlr/tst/UT_GTB_AppDcmHndlr/CMakeFiles/UT_AppDcmHndlr.dir/Testcases/UT_AppDcmHndlr.cpp.obj
+[ 87%] Linking CXX executable ..\..\..\..\..\host\UT_AppDcmHndlr.exe
+[ 87%] Built target UT_AppDcmHndlr
+[ 90%] Building C object rbx/AppData/NvmBlockHndlr/tst/UT_GTB_NvmBlockHndlr/CMakeFiles/UT_NvmBlockHndlr.dir/__/__/src/NvmBlockHndlr.c.obj
+[ 93%] Building CXX object rbx/AppData/NvmBlockHndlr/tst/UT_GTB_NvmBlockHndlr/CMakeFiles/UT_NvmBlockHndlr.dir/Mock/mock.cpp.obj
+[ 96%] Building CXX object rbx/AppData/NvmBlockHndlr/tst/UT_GTB_NvmBlockHndlr/CMakeFiles/UT_NvmBlockHndlr.dir/Testcases/UT_NvmBlockHndlr.cpp.obj
+[100%] Linking CXX executable ..\..\..\..\..\host\UT_NvmBlockHndlr.exe
+[100%] Built target UT_NvmBlockHndlr
+[INFO] Building test target: UT_AppDcmHndlr
+Consolidate compiler generated dependencies of target UT_AppDcmHndlr
+[100%] Built target UT_AppDcmHndlr
+[INFO] Running test binary: build\host\UT_AppDcmHndlr.exe
+Running main() from C:\Users\mfr2abt\.conan\data\gtest\cci.20210126\_\_\build\0751861366278f33f0083eccf7c8108ccc2fc771\source_subfolder\googletest\src\gtest_main.cc
+[==========] Running 145 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 145 tests from AppDcmHndlrMockFixture
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDataDIAGONIfPositive
+[       OK ] AppDcmHndlrMockFixture.TestReadDataDIAGONIfPositive (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDataDIAGONIFNegative
+[       OK ] AppDcmHndlrMockFixture.TestReadDataDIAGONIFNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDataNegative
+[       OK ] AppDcmHndlrMockFixture.TestReadDataNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMInitial
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMInitial (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending2
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending2 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending3
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDCMPending3 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReturnControlToECUDefaultCase
+[       OK ] AppDcmHndlrMockFixture.TestReturnControlToECUDefaultCase (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitial
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitial (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitialBranchTest
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMInitialBranchTest (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPending
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPending (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingIf
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingIf (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElseIf
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElseIf (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElse
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMPendingElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMDefaultCase
+[       OK ] AppDcmHndlrMockFixture.TestShortTermAdjustmentDCMDefaultCase (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestInitProc
+[       OK ] AppDcmHndlrMockFixture.TestInitProc (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5ms
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5ms (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msNegative
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msNegative2
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msNegative2 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msCoverage
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msCoverage (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.RunnableProc5msElse
+[       OK ] AppDcmHndlrMockFixture.RunnableProc5msElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF113
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF113 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC01C
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC01C (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC021
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC021 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF18Cfunc
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF18Cfunc (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF163func
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF163func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF111func
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF111func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDF110func
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDF110func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDReadSecureMessagePayload
+[       OK ] AppDcmHndlrMockFixture.TestDIDReadSecureMessagePayload (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDReadFreshnessValueManagerPayload
+[       OK ] AppDcmHndlrMockFixture.TestDIDReadFreshnessValueManagerPayload (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDReadCANMessageAuthentication
+[       OK ] AppDcmHndlrMockFixture.TestDIDReadCANMessageAuthentication (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestStartRoutine0212func
+[       OK ] AppDcmHndlrMockFixture.TestStartRoutine0212func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestStartRoutine0212funcElse
+[       OK ] AppDcmHndlrMockFixture.TestStartRoutine0212funcElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestStartRoutine0232func
+[       OK ] AppDcmHndlrMockFixture.TestStartRoutine0232func (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC023
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC023 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC028
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC028 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TesthexDigitToChar
+[       OK ] AppDcmHndlrMockFixture.TesthexDigitToChar (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TesthexToString
+[       OK ] AppDcmHndlrMockFixture.TesthexToString (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestSecurityBufferReset
+[       OK ] AppDcmHndlrMockFixture.TestSecurityBufferReset (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestSecurityBuffersreset1
+[       OK ] AppDcmHndlrMockFixture.TestSecurityBuffersreset1 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC03B
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC03B (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC03BElse
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC03BElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC03BNegative
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC03BNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC039
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC039 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC039Else
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC039Else (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestReadDIDC039Negative
+[       OK ] AppDcmHndlrMockFixture.TestReadDIDC039Negative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC021
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC021 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC01C
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC01C (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC023
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC023 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestWriteDIDC028
+[       OK ] AppDcmHndlrMockFixture.TestWriteDIDC028 (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDC03C
+[       OK ] AppDcmHndlrMockFixture.TestDIDC03C (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDC03CElse
+[       OK ] AppDcmHndlrMockFixture.TestDIDC03CElse (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestDIDC03CNegative
+[       OK ] AppDcmHndlrMockFixture.TestDIDC03CNegative (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestCompareArray
+[       OK ] AppDcmHndlrMockFixture.TestCompareArray (0 ms)
+[ RUN      ] AppDcmHndlrMockFixture.TestCalculateSize
+C:\Users\kos1hyd\workspace\V&V\Mutation_Test_AI\clones\c1\copy-5\rbx\AppData\AppDcmHndlr\tst\UT_GTB_AppDcmHndlr\Testcases\UT_AppDcmHndlr.cpp:2240: Failure
+Expected equality of these values:
+  res
+    Which is: '\x13' (19)
+  Test.res
+    Which is: '\x14' (20)
+[  FAILED  ] AppDcmHndlrMockFixture.TestCalculateSize (0 ms)</div>
+    <h3>Mutant #6</h3>
+    <table><tr><th>Original Code</th><th>Mutated Code</th></tr>
+    <tr><td><div class="code-block">return length;</div></td>
+        <td><div class="code-block">return length + (max_length == 0u ? 1u : 0u);</div></td></tr></table>
+    <p>Category: <strong>Return Value Change</strong></p>
+    <p>Status: <strong style="color:red">Survived</strong></p>
+
+    <h3>Summary</h3>
+    <ul>
+        <li>Total Mutants: 6</li>
+        <li>Survived: 2</li>
+        <li>Killed: 4</li>
+        <li>Build Errors: 0</li>
+        <li>Mutation Score: <strong>66.67%</strong></li>
+    </ul>
+</div>
+</body></html>
