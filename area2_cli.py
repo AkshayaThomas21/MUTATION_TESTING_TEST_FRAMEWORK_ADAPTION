@@ -17,8 +17,15 @@ Two ways to run:
 from __future__ import annotations
 
 import os
+import sys
 import json
 import argparse
+
+# Windows consoles default to cp1252 and crash on box-drawing / star glyphs.
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
 
 from adapters import get_registry
 
@@ -83,6 +90,58 @@ def cmd_demo(framework: str, project: str) -> None:
     print("=" * 64)
 
 
+def cmd_pipeline(framework: str, use_llm: bool) -> None:
+    """Run the full 5-stage AI-Powered Mutation Testing Pipeline (offline demo)."""
+    from engine import MutationPipelineEngine
+
+    engine = MutationPipelineEngine(framework=framework, use_llm=use_llm)
+    report = engine.run_demo()
+    h = report.headline()
+    s1, s2, s4, s5 = report.stage1, report.stage2, report.stage4, report.stage5
+
+    bar = "=" * 70
+    print(bar)
+    print(f"  AI-POWERED MUTATION TESTING PIPELINE — {framework.upper()}")
+    print(bar)
+    print("  STAGE 1 · Code Intelligence Engine")
+    print(f"    methods           : {len(s1.methods)}  ({', '.join(list(s1.methods)[:4])})")
+    print(f"    dependency edges  : {sum(len(v) for v in s1.graph.edges.values())}")
+    print(f"    coverage gaps     : {len(s1.gaps)}")
+    for g in s1.gaps[:4]:
+        print(f"        - {g.method}: {g.reason} (branches={g.branches}, tests={g.covering_tests})")
+    print("  STAGE 2 · LLM Mutation Engine")
+    print(f"    generated         : {len(s2.mutants) + len(s2.rejected)}")
+    print(f"    selected (valid)  : {len(s2.selected)}   rejected (halluc): {len(s2.rejected)}")
+    top = s2.selected[:3]
+    for m in top:
+        print(f"        #{m.priority_rank} {m.method} [{m.category}] conf={m.confidence}")
+    print("  STAGE 3 · Parallel Execution Orchestrator")
+    print(f"    workers           : {report.resource_summary.get('max_workers')} "
+          f"(cpu={report.resource_summary.get('cpu_count')})")
+    print(f"    jobs executed     : {len(report.execution_results)}")
+    print("  STAGE 4 · Result Analyzer")
+    print(f"    mutation score    : {s4.mutation_score}%  "
+          f"(killed={s4.killed} survived={s4.survived} equiv={s4.equivalent})")
+    print(f"    coverage delta    : {s4.coverage_delta}   exec time: {s4.total_time_s}s")
+    for sv in s4.survivors[:4]:
+        print(f"        survivor {sv.method}#{sv.mutant_id} -> {sv.root_cause}")
+    print("  STAGE 5 · AI Test Synthesis Engine")
+    print(f"    tests generated   : {len(s5.tests)}   accepted: {len(s5.accepted)}   "
+          f"needs review: {sum(1 for t in s5.tests if t.needs_review)}")
+    print(f"    integrated file   : {s5.integrated_path}")
+    print(bar)
+    print(f"  HEADLINE  score={h['mutation_score']}%  gaps={h['coverage_gaps']}  "
+          f"new-tests={h['tests_accepted']}/{h['tests_generated']}")
+    print(bar)
+
+    os.makedirs("temp", exist_ok=True)
+    out = os.path.join("temp", "pipeline_report.json")
+    with open(out, "w", encoding="utf-8") as f:
+        json.dump(report.to_dict(), f, indent=2)
+    print(f"  Wrote {out}")
+    print(bar)
+
+
 def cmd_from_temp(framework: str, source: str, project: str, use_llm: bool) -> None:
     from orchestrator import run_area2_from_temp
     from core.function_extractor import extract_functions
@@ -105,6 +164,8 @@ def main() -> None:
     p.add_argument("--parse", action="store_true")
     p.add_argument("--demo", action="store_true")
     p.add_argument("--from-temp", action="store_true")
+    p.add_argument("--pipeline", action="store_true",
+                   help="run the full 5-stage AI-powered mutation testing pipeline (offline)")
     p.add_argument("--framework", default="gtest")
     p.add_argument("--tests", nargs="*", default=[])
     p.add_argument("--source", default="")
@@ -116,6 +177,8 @@ def main() -> None:
         cmd_list_frameworks()
     elif args.parse:
         cmd_parse(args.framework, args.tests, args.source)
+    elif args.pipeline:
+        cmd_pipeline(args.framework, not args.no_llm)
     elif args.from_temp:
         cmd_from_temp(args.framework, args.source, args.project, not args.no_llm)
     elif args.demo:
