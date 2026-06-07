@@ -142,6 +142,42 @@ def cmd_pipeline(framework: str, use_llm: bool) -> None:
     print(bar)
 
 
+def cmd_wow(framework: str, project: str, target_asil: str, use_llm: bool, no_open: bool) -> None:
+    """Run the full pipeline, then generate + open the MutaSentinel briefing."""
+    from engine import MutationPipelineEngine
+    from wow import generate_briefing
+
+    engine = MutationPipelineEngine(framework=framework, use_llm=use_llm)
+    report = engine.run_demo()
+    out = generate_briefing(report, project=project, target_asil=target_asil)
+    s = out["safety"]
+    sb = out["safety_before"]
+
+    bar = "=" * 70
+    print(bar)
+    print("  \u25c8 MUTASENTINEL \u2014 ASIL-Aware Mutation Intelligence")
+    print(bar)
+    print(f"  Project        : {project}  [{framework.upper()}]")
+    print(f"  Mutation score : {out['baseline_score']}%  ->  {out['projected_score']}%  (after AI self-heal)")
+    print(f"  Safety (SCI)   : {sb['safety_confidence_index']}%  ->  {s['safety_confidence_index']}%   "
+          f"target ASIL {s['target_asil']}")
+    print(f"  ASIL readiness : {sb['achieved_asil']}  ->  {s['achieved_asil']}  (after AI self-heal)")
+    print(f"  Verdict        : {s['verdict']}")
+    print(f"  Blind spots    : {len(s['blind_spots'])}  "
+          f"({s['critical_count']} critical, {s['high_count']} high)")
+    print(f"  Risk mitigated : EUR {out['roi']['risk_mitigated_eur']:,.0f}   "
+          f"net value EUR {out['roi']['net_value_eur']:,.0f}   payback {out['roi']['payback_ratio']}x")
+    print(f"  Test genome    : {out['genome']['fingerprint']}  (dominant: {out['genome']['dominant']})")
+    print(bar)
+    print(f"  Briefing       : {out['path']}")
+    print(bar)
+
+    if not no_open:
+        import webbrowser
+        webbrowser.open("file:///" + out["path"].replace(chr(92), "/"))
+        print("  Opened in your browser.")
+
+
 def cmd_from_temp(framework: str, source: str, project: str, use_llm: bool) -> None:
     from orchestrator import run_area2_from_temp
     from core.function_extractor import extract_functions
@@ -166,6 +202,11 @@ def main() -> None:
     p.add_argument("--from-temp", action="store_true")
     p.add_argument("--pipeline", action="store_true",
                    help="run the full 5-stage AI-powered mutation testing pipeline (offline)")
+    p.add_argument("--wow", action="store_true",
+                   help="run the pipeline + generate the MutaSentinel ASIL/ROI briefing (HTML)")
+    p.add_argument("--target-asil", default="D", choices=["A", "B", "C", "D"],
+                   help="ISO 26262 ASIL target for the safety verdict (default D)")
+    p.add_argument("--no-open", action="store_true", help="do not auto-open the briefing in a browser")
     p.add_argument("--framework", default="gtest")
     p.add_argument("--tests", nargs="*", default=[])
     p.add_argument("--source", default="")
@@ -179,6 +220,8 @@ def main() -> None:
         cmd_parse(args.framework, args.tests, args.source)
     elif args.pipeline:
         cmd_pipeline(args.framework, not args.no_llm)
+    elif args.wow:
+        cmd_wow(args.framework, args.project, args.target_asil, not args.no_llm, args.no_open)
     elif args.from_temp:
         cmd_from_temp(args.framework, args.source, args.project, not args.no_llm)
     elif args.demo:
