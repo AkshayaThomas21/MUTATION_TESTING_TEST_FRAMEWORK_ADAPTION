@@ -12,7 +12,7 @@ mutation:
 # ----------------------------------------------------------------------------
 area2:
   # Which framework adapter to use. One of the registered adapters:
-  #   gtest | unity | cpputest | pytest | vectorcast | bosch | robot (spec-only)
+  #   gtest | unity | cpputest | pytest | vectorcast | bosch | att | robot (spec-only)
   # or leave blank to auto-detect from the test file extensions.
   framework: gtest
 

@@ -10,13 +10,13 @@
 
 ```powershell
 pip install -r requirements.txt
-python area2_cli.py --list-frameworks          # see all adapters (incl. zero-code 'robot')
+python area2_cli.py --list-frameworks          # see all adapters (incl. ATT + zero-code 'robot')
 python area2_cli.py --demo --framework gtest   # writes temp/quality_report.json
 streamlit run dashboard/app.py                 # open the dashboard
 ```
 
 Switch the **Framework adapter** in the sidebar to `unity`, `cpputest`, `pytest`,
-`vectorcast`, `bosch`, or `robot` and watch the same analysis + the **"Render Once,
+`vectorcast`, `bosch`, `att`, or `robot` and watch the same analysis + the **"Render Once,
 Emit Everywhere"** tab regenerate the *same* AI test in every framework.
 
 ---

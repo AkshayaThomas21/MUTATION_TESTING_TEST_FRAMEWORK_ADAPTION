@@ -11,6 +11,9 @@ tree_sitter
 tree-sitter
 tree-sitter-c==0.23.4
 
+# ATT adapter: read ExcelToATT (.xlsb) authoring workbooks
+pyxlsb
+
 # System utils
 tqdm
 rich
