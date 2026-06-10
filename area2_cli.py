@@ -178,6 +178,35 @@ def cmd_wow(framework: str, project: str, target_asil: str, use_llm: bool, no_op
         print("  Opened in your browser.")
 
 
+def cmd_all(framework: str, project: str, target_asil: str, use_llm: bool, no_open: bool) -> None:
+    """Run EVERY offline pipeline end-to-end in a single command.
+
+    Sequence: list adapters -> quality report (--demo) -> 5-stage pipeline
+    (--pipeline) -> MutaSentinel ASIL/ROI briefing (--wow).
+    """
+    bar = "#" * 70
+    print(bar)
+    print(f"  RUN-ALL  |  framework={framework.upper()}  llm={'on' if use_llm else 'off'}")
+    print(bar)
+
+    print("\n>>> [1/4] Framework-Agnostic Gateway\n")
+    cmd_list_frameworks()
+
+    print("\n>>> [2/4] Quality Report (offline demo)\n")
+    cmd_demo(framework, project)
+
+    print("\n>>> [3/4] Full 5-Stage AI Pipeline\n")
+    cmd_pipeline(framework, use_llm)
+
+    print("\n>>> [4/4] MutaSentinel ASIL/ROI Briefing\n")
+    cmd_wow(framework, project, target_asil, use_llm, no_open)
+
+    print("\n" + bar)
+    print("  RUN-ALL COMPLETE  ->  temp/quality_report.json, temp/pipeline_report.json")
+    print("  View the dashboard:  streamlit run dashboard/app.py")
+    print(bar)
+
+
 def cmd_from_temp(framework: str, source: str, project: str, use_llm: bool) -> None:
     from orchestrator import run_area2_from_temp
     from core.function_extractor import extract_functions
@@ -204,6 +233,8 @@ def main() -> None:
                    help="run the full 5-stage AI-powered mutation testing pipeline (offline)")
     p.add_argument("--wow", action="store_true",
                    help="run the pipeline + generate the MutaSentinel ASIL/ROI briefing (HTML)")
+    p.add_argument("--all", action="store_true",
+                   help="run EVERY offline pipeline in one go (gateway + demo + 5-stage + briefing)")
     p.add_argument("--target-asil", default="D", choices=["A", "B", "C", "D"],
                    help="ISO 26262 ASIL target for the safety verdict (default D)")
     p.add_argument("--no-open", action="store_true", help="do not auto-open the briefing in a browser")
@@ -214,7 +245,9 @@ def main() -> None:
     p.add_argument("--no-llm", action="store_true", help="disable LLM (heuristic only)")
     args = p.parse_args()
 
-    if args.list_frameworks:
+    if args.all:
+        cmd_all(args.framework, args.project, args.target_asil, not args.no_llm, args.no_open)
+    elif args.list_frameworks:
         cmd_list_frameworks()
     elif args.parse:
         cmd_parse(args.framework, args.tests, args.source)
